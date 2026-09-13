@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/rest/api/public/templates/slug/:path*",
+      "destination": "/mock-data/template-data.json"
+    }
+  ]
+}
