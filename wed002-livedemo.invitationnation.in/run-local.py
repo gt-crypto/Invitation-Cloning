@@ -59,6 +59,12 @@ class InvitationHandler(SimpleHTTPRequestHandler):
             self.send_error(502, "API proxy failed: " + str(error.reason))
             return
 
+        body = body.replace(
+            API_ORIGIN.encode("utf-8"), b"/api"
+        ).replace(
+            CDN_ORIGIN.encode("utf-8"), b"/cdn-admin"
+        )
+
         self.send_response(status)
         self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(len(body)))
@@ -90,6 +96,11 @@ class InvitationHandler(SimpleHTTPRequestHandler):
             API_ORIGIN.encode("ascii"), b"/api"
         ).replace(
             CDN_ORIGIN.encode("ascii"), b"/cdn-admin"
+        )
+        body = body.replace(
+            b'n.jsx("main",{className:"wed002-main-content",children:z()}),n.jsx(Z2,{tempId:i,categoryType:r}),',
+            b'n.jsx("main",{className:"wed002-main-content",children:z()}),',
+            1,
         )
         self.send_response(200)
         self.send_header("Content-Type", "text/javascript; charset=utf-8")
