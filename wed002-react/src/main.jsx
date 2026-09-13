@@ -26,5 +26,5 @@ if (!new URLSearchParams(window.location.search).has('slug')) {
 
 const script = document.createElement('script')
 script.type = 'module'
-script.src = '/reference/index.js'
+script.src = `/reference/index.js?v=${Date.now()}`
 document.body.appendChild(script)

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+body { margin: 0; padding: 0; overflow: hidden; }
+#wed002-preloader{height:100vh;background-color:#892c4b;display:flex;justify-content:center;align-items:center}
+#wed002-preloader-flower-box{--box-size: 18rem;height:var(--box-size);width:var(--box-size);display:flex;justify-content:center;align-items:center;position:relative}
+#wed002-preloader-flower-center{--box-size: 4.8rem;height:var(--box-size);width:var(--box-size);background-color:#fb0;border-radius:50%;z-index:4;position:absolute}
+#wed002-preloader-flower-petals-area{background-color:#00f7;height:100%;width:100%;position:absolute;top:0;left:0;display:flex;justify-content:center;align-items:center;border-radius:50%}
+#wed002-flower-petail-area{position:relative;top:0;left:0;height:100%;width:100%;display:flex;justify-content:center;align-items:flex-start}
+.wed002-flower-petal{background-color:#fff;height:49%;width:34%;border-radius:50%;position:absolute;background:url(/assets/leafShape-CLwbFqNT.svg) center center no-repeat;background-size:contain;filter:invert(1);transform-origin:bottom}
+.wed002-flower-petal:nth-child(2){transform:rotate(45deg);transform-origin:bottom}
+.wed002-flower-petal:nth-child(3){transform:rotate(90deg);transform-origin:bottom}
+.wed002-flower-petal:nth-child(4){transform:rotate(135deg);transform-origin:bottom}
+.wed002-flower-petal:nth-child(5){transform:rotate(180deg);transform-origin:bottom}
+.wed002-flower-petal:nth-child(6){transform:rotate(225deg);transform-origin:bottom}
+.wed002-flower-petal:nth-child(7){transform:rotate(270deg);transform-origin:bottom}
+.wed002-flower-petal:nth-child(8){transform:rotate(315deg);transform-origin:bottom}
+</style>
+</head>
+<body>
+  <div id="wed002-preloader">
+    <div id="wed002-preloader-flower-box">
+      <div id="wed002-flower-petail-area">
+        <div class="wed002-flower-petal"></div>
+        <div class="wed002-flower-petal"></div>
+        <div class="wed002-flower-petal"></div>
+        <div class="wed002-flower-petal"></div>
+        <div class="wed002-flower-petal"></div>
+        <div class="wed002-flower-petal"></div>
+        <div class="wed002-flower-petal"></div>
+        <div class="wed002-flower-petal"></div>
+      </div>
+      <div id="wed002-preloader-flower-center"></div>
+    </div>
+  </div>
+  <script>
+    console.log('Starting animation...');
+    gsap.timeline({
+      onComplete: () => {
+        console.log('FLOWER ANIMATION COMPLETE!');
+        document.getElementById('wed002-preloader').style.display = 'none';
+      }
+    })
+    .from("#wed002-preloader-flower-center",{scale:0,duration:.4,delay:.2,ease:"back"})
+    .from(".wed002-flower-petal",{scale:0,stagger:.15,duration:.5,ease:"back"})
+    .to("#wed002-flower-petail-area",{rotate:360,duration:1.2,ease:"power1.inOut"})
+    .to("#wed002-flower-petail-area",{scale:1.2,duration:.3})
+    .to("#wed002-flower-petail-area",{scale:0,duration:.4,delay:.1})
+    .to("#wed002-preloader-flower-center",{scale:0,duration:.3});
+  </script>
+</body>
+</html>

@@ -49,6 +49,9 @@ const liveDemoData = {
     images: {
       'couple_profile|bride_photo': '/templates/a3e63964-6d93-4e89-8a2f-5e1d446e74e9_image.jpg',
       'couple_profile|groom_photo': '/templates/2a9c97c3-90d4-4496-82d4-3d958dc74562_image.jpg',
+      'our_story|0|image': '/templates/7d818145-cfe0-4a43-9fc7-f142f51ce9a4_image.jpg',
+      'family|bride_family_photo': '/templates/a6e5073d-0358-400a-a89b-617e10f68d9f_image.jpg',
+      'family|groom_family_photo': '/templates/b82ed919-69f3-4ca6-b68e-ff81fabcbfbe_image.jpg',
     },
   },
 }
@@ -70,6 +73,8 @@ const localInvitationData = {
 export default defineConfig({
   plugins: [react(), localInvitationData],
   server: {
+    host: '0.0.0.0',
+    port: 5173,
     proxy: {
       '/api': {
         target: 'https://api.invitationnation.in',
